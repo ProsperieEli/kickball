@@ -23,5 +23,6 @@ export default function Teams() {
         })}
       </ul>
     </div>
+    //ignore
   );
 }
