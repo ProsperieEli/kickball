@@ -28,10 +28,10 @@ function App() {
         </header>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/Teams" component={Teams} />
-          <Route exact path="/Players" component={Players} />
-          <Route exact path="/Team/:teamId" component={TeamDetail} />
-          <Route exact path="/Players/:playerId" component={PlayerDetail} />
+          <Route exact path="/team/:teamId" component={TeamDetail} />
+          <Route exact path="/teams" component={Teams} />
+          <Route exact path="/players/:playerId" component={PlayerDetail} />
+          <Route exact path="/players" component={Players} />
         </Switch>
       </Router>
     </div>
