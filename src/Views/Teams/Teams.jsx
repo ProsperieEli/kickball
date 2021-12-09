@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTeams } from "../../../Services/teams";
+import { getTeams } from "../../Services/teams";
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);
@@ -22,6 +22,9 @@ export default function Teams() {
           );
         })}
       </ul>
+      <Link to={"/team/create"}>
+        <button>Create your team!</button>
+      </Link>
     </div>
     //ignore
   );

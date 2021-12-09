@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getPlayerById } from "../../../Services/players";
+import { getPlayerById } from "../../Services/players";
 
 export default function PlayerDetail({ label, match }) {
   const { playerId } = match.params;

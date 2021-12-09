@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTeamById } from "../../../Services/teams";
+import { getTeamById } from "../../Services/teams";
 
 export default function TeamDetail({ label, match }) {
   const { teamId } = match.params;
@@ -29,12 +29,13 @@ export default function TeamDetail({ label, match }) {
           return (
             <Link key={player.id} to={`/players/${player.id}`}>
               <li>
-                {player.position} - {player.name}
+                {player.position} - {player.name}{" "}
               </li>
             </Link>
           );
         })}
       </ul>
+      <button type="onclick">Delete Team</button>
     </>
   );
 }
