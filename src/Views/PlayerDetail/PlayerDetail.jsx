@@ -25,6 +25,9 @@ export default function PlayerDetail({ label, match }) {
         <h1>{player.name}</h1>
         <h2>{player.position}</h2>
       </div>
+      <Link to={`/players/update/${playerId}`}>
+        <button type="submit">Update Player</button>
+      </Link>
     </>
   );
 }

@@ -14,8 +14,10 @@ export async function getPlayerById(id) {
   return parseData(request);
 }
 
-export async function createPlayer({ name, position }) {
-  const request = await client.from("players").insert({ name, position });
+export async function createPlayer({ name, position, teamId }) {
+  const request = await client
+    .from("players")
+    .insert([{ name, position, team_id: teamId }]);
   return parseData(request);
 }
 

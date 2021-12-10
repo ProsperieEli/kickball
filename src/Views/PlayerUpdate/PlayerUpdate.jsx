@@ -1,17 +1,66 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useState } from "react/cjs/react.development";
+import {
+  deletePlayer,
+  getPlayerById,
+  updatePlayer,
+} from "../../Services/players";
+import { useEffect } from "react";
 
-export default function PlayerUpdate(id, { name, position }) {
+export default function PlayerUpdate({ match }) {
+  const [name, setName] = useState("");
+  const [position, setPosition] = useState("");
+  const [player, setPlayer] = useState("");
+  const history = useHistory();
+  const { playerId } = match.params;
+
+  useEffect(() => {
+    const getPlayer = async () => {
+      const player = await getPlayerById(playerId);
+      setName(player.name);
+      setPosition(player.position);
+      setPlayer(player.id);
+    };
+    getPlayer();
+  }, [playerId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await updatePlayer(playerId, { name, position });
+    history.push(`/players/${playerId}`);
+  };
+
+  const handleDelete = async () => {
+    await deletePlayer(playerId);
+    history.push("/players");
+  };
+
   return (
-    <form>
-      <label>Name:</label>
-      <input id="name" type="text" name="name" value="name" />
-
-      <label>Position:</label>
-      <input id="position" type="text" name="position" value="position" />
-
-      <button type="submit" aria-label="Update Player">
-        update Player
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <label>Position</label>
+        <input
+          id="position"
+          type="text"
+          name="position"
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+        />
+        <button type="submit">Update</button>
+      </form>
+      <button type="submit" onClick={handleDelete}>
+        Delete Player
       </button>
-    </form>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function TeamDetail({ label, match }) {
   const { teamId } = match.params;
-  const [team, setTeam] = useState(null);
+  const [team, setTeam] = useState({});
   const [loading, setLoading] = useState(true);
   const history = useHistory();
 
@@ -17,13 +17,14 @@ export default function TeamDetail({ label, match }) {
       .finally(() => setLoading(false));
   }, [teamId]);
 
-  if (loading) return <h1>One Moment. . .</h1>;
-
   const handleSubmit = async () => {
     console.log("hi");
     await deleteTeam(teamId);
     history.push(`/teams`);
   };
+
+  if (loading) return <h1>One Moment. . .</h1>;
+  console.log(team);
   return (
     <>
       <h2>{label}</h2>
@@ -50,6 +51,9 @@ export default function TeamDetail({ label, match }) {
       <Link to={`/team/update/${team.id}`}>
         {" "}
         <button type="onClick">Update Team</button>
+      </Link>
+      <Link to={`/players/create/${team.id}`}>
+        <button type="onClick">Add New Player</button>
       </Link>
     </>
   );

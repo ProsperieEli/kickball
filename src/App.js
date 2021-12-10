@@ -13,6 +13,7 @@ import PlayerUpdate from "./Views/PlayerUpdate/PlayerUpdate";
 import TeamDetail from "./Views/TeamDetail/TeamDetail";
 import Teams from "./Views/Teams/Teams";
 import TeamUpdate from "./Views/TeamUpdate/TeamUpdate";
+import PlayerCreate from "./Views/PlayerCreate/PlayerCreate";
 
 function App() {
   return (
@@ -31,13 +32,14 @@ function App() {
         </header>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/team/update/:teamId" component={TeamUpdate} />
-          <Route exact path="/team/create" component={Createteam} />
-          <Route exact path="/team/:teamId" component={TeamDetail} />
-          <Route exact path="/teams" component={Teams} />
-          <Route exact path="/players/:playerId" component={PlayerUpdate} />
-          <Route exact path="/players/:playerId" component={PlayerDetail} />
-          <Route exact path="/players" component={Players} />
+          <Route path="/team/update/:teamId" component={TeamUpdate} />
+          <Route path="/team/create" component={Createteam} />
+          <Route path="/team/:teamId" component={TeamDetail} />
+          <Route path="/teams" component={Teams} />
+          <Route path="/players/create/:teamId" component={PlayerCreate} />
+          <Route path="/players/update/:playerId" component={PlayerUpdate} />
+          <Route path="/players/:playerId" component={PlayerDetail} />
+          <Route path="/players" component={Players} />
         </Switch>
       </Router>
     </div>
