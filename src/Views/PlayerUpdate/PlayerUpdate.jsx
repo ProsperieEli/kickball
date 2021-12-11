@@ -11,6 +11,7 @@ import { useEffect } from "react";
 export default function PlayerUpdate({ match }) {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
+  const [state, setState] = useState("");
   const [player, setPlayer] = useState("");
   const history = useHistory();
   const { playerId } = match.params;
@@ -55,6 +56,14 @@ export default function PlayerUpdate({ match }) {
           name="position"
           value={position}
           onChange={(e) => setPosition(e.target.value)}
+        />
+        <label>State:</label>
+        <input
+          id="state"
+          type="text"
+          name="state"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
         />
         <button type="submit">Update</button>
       </form>

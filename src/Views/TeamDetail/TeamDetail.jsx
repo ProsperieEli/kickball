@@ -27,6 +27,7 @@ export default function TeamDetail({ label, match }) {
   console.log(team);
   return (
     <>
+      <h1>{team.name}</h1>
       <h2>{label}</h2>
       <p>
         <Link to="/teams">Back to Teams</Link>
