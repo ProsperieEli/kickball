@@ -5,11 +5,15 @@ import {
   NavLink,
 } from "react-router-dom";
 import "./App.css";
+import Createteam from "./Views/CreateTeam/Createteam";
 import Home from "./Views/Home/Home";
-import PlayerDetail from "./Views/Home/PlayerDetail/PlayerDetail";
-import Players from "./Views/Home/Players/Players";
-import TeamDetail from "./Views/Home/TeamDetail/TeamDetail";
-import Teams from "./Views/Home/Teams/Teams";
+import PlayerDetail from "./Views/PlayerDetail/PlayerDetail";
+import Players from "./Views/Players/Players";
+import PlayerUpdate from "./Views/PlayerUpdate/PlayerUpdate";
+import TeamDetail from "./Views/TeamDetail/TeamDetail";
+import Teams from "./Views/Teams/Teams";
+import TeamUpdate from "./Views/TeamUpdate/TeamUpdate";
+import PlayerCreate from "./Views/PlayerCreate/PlayerCreate";
 
 function App() {
   return (
@@ -28,10 +32,14 @@ function App() {
         </header>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/Teams" component={Teams} />
-          <Route exact path="/Players" component={Players} />
-          <Route exact path="/Team/:teamId" component={TeamDetail} />
-          <Route exact path="/Players/:playerId" component={PlayerDetail} />
+          <Route path="/team/update/:teamId" component={TeamUpdate} />
+          <Route path="/team/create" component={Createteam} />
+          <Route path="/team/:teamId" component={TeamDetail} />
+          <Route path="/teams" component={Teams} />
+          <Route path="/players/create/:teamId" component={PlayerCreate} />
+          <Route path="/players/update/:playerId" component={PlayerUpdate} />
+          <Route path="/players/:playerId" component={PlayerDetail} />
+          <Route path="/players" component={Players} />
         </Switch>
       </Router>
     </div>
