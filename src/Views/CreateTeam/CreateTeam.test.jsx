@@ -2,9 +2,9 @@ import { screen, render } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { MemoryRouter as Router, Switch, Route } from "react-router-dom";
-
 import Createteam from "./Createteam";
 import TeamDetail from "../TeamDetail/TeamDetail";
+import userEvent from "@testing-library/user-event";
 
 const mockTeam = {
   id: 9,
@@ -48,5 +48,15 @@ it("Should create and pull the mocked team", async () => {
     </Router>
   );
 
-  screen.getByText("Add Team.", { exact: false });
+  screen.getByText("Add Team.");
+
+  const nameField = screen.getByLabelText(/Name/i);
+  //   const cityField = screen.getByLabelText(/City:/);
+  //   const stateField = screen.getByLabelText(/State:/);
+  const submitBtn = screen.getByRole("button", { name: "Create Team" });
+
+  userEvent.type(nameField, "Vikings");
+  //   userEvent.type(cityField, "memphis");
+  //   userEvent.type(stateField, "TN");
+  userEvent.click(submitBtn);
 });

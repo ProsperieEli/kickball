@@ -21,7 +21,7 @@ export default function Createteam() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label>Name:</label>
+      <label htmlFor="name">Name:</label>
       <input
         id="name"
         type="text"
@@ -42,7 +42,7 @@ export default function Createteam() {
       <label>State:</label>
       <input
         id="state"
-        type="dropdown"
+        type="text"
         name="state"
         value={state}
         onChange={(e) => setState(e.target.value)}
